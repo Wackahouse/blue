@@ -6,6 +6,9 @@ import './App.css';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 
+var currentUser = {name: 'Gurneet'};
+// var currentUser = null;
+
 function Home() {
   return (
     <div className="container">
@@ -97,8 +100,62 @@ function Signup() {
   )
 }
 
+function Friends() {
+  if(currentUser) {
+    return (
+      <div className="container">
+        <h1>Friends</h1>
+      </div>
+    );
+  } else {
+    return (
+    <div className="container">
+      <h1>The user needs to Login first</h1>
+    </div>
+    );
+  }
+}
+
+function AccountSettings() {
+  if(currentUser) {
+    return (
+      <div className="container">
+        <h1>Account Settings</h1>
+      </div>
+    );
+  } else {
+    return (
+    <div className="container">
+      <h1>The user needs to Login first</h1>
+    </div>
+    );
+  }
+}
+
+function GameSettings() {
+  if(currentUser) {
+    return (
+      <div className="container">
+        <h1>Game Settings</h1>
+      </div>
+    );
+  } else {
+    return (
+    <div className="container">
+      <h1>The user needs to Login first</h1>
+    </div>
+    );
+  }
+}
+
+function Logout() {
+  currentUser = null;
+  return (
+    <Redirect to="/" />
+  );
+}
+
 function App() {
-  const currentUser = {name: 'Gurneet'};
   return (
     <BrowserRouter>
       <Navbar currentUser={currentUser}/>
@@ -109,6 +166,10 @@ function App() {
         <Route path='/help' component={Help} exact/>
         <Route path='/login' component={Login} exact/>
         <Route path='/signup' component={Signup} exact/>
+        <Route path='/friends' component={Friends} exact/>
+        <Route path='/account-settings' component={AccountSettings} exact/>
+        <Route path='/game-settings' component={GameSettings} exact/>
+        <Route path='/logout' component={Logout} exact/>
         <Redirect to='/' />
       </Switch>
       <Footer />
