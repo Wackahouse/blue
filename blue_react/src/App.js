@@ -38,10 +38,37 @@ function Contact() {
   )
 }
 
+function Login() {
+  return(
+    <div class="signup-form">
+      <form action="#" method="post">
+        <h2>Login</h2>
+        <p class="hint-text">Login with your social media account or email address</p>
+        <div class="social-btn text-center">
+          <a href="#" class="btn btn-primary btn-lg"><i class="fa fa-facebook"></i> Facebook</a>
+          <a href="#" class="btn btn-info btn-lg"><i class="fa fa-twitter"></i> Twitter</a>
+          <a href="#" class="btn btn-danger btn-lg"><i class="fa fa-google"></i> Google</a>
+        </div>
+        <div class="or-seperator"><b>or</b></div>
+        <div class="form-group">
+          <input type="text" class="form-control input-lg" name="username" placeholder="Username" required="required" />
+        </div>
+        <div class="form-group">
+          <input type="password" class="form-control input-lg" name="password" placeholder="Password" required="required" />
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-success btn-lg btn-block signup-btn">Login</button>
+        </div>
+      </form>
+      <div class="text-center">Don't have an account yet? <a href="signup">Sign up here</a></div>
+  </div>
+  );
+}
+
 function Signup() {
   return (
     <div class="signup-form">
-      <form action="/examples/actions/confirmation.php" method="post">
+      <form action="#" method="post">
       <h2>Create an Account</h2>
       <p class="hint-text">Sign up with your social media account or email address</p>
       <div class="social-btn text-center">
@@ -66,7 +93,7 @@ function Signup() {
               <button type="submit" class="btn btn-success btn-lg btn-block signup-btn">Sign Up</button>
           </div>
       </form>
-      <div class="text-center">Already have an account? <a href="#">Login here</a></div>
+      <div class="text-center">Already have an account? <a href="login">Login here</a></div>
   </div>
   )
 }
@@ -80,6 +107,7 @@ function App() {
         <Route path='/leaderboard' component={Leaderboard} exact/>
         <Route path='/contact' component={Contact} exact/>
         <Route path='/help' component={Help} exact/>
+        <Route path='/login' component={Login} exact/>
         <Route path='/signup' component={Signup} exact/>
         <Redirect to='/' />
       </Switch>
