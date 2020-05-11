@@ -1,16 +1,36 @@
 import React from 'react';
-// import Button from 'react-bootstrap/Button'
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
+import Container from 'react-bootstrap/Container'
 import logo from './logo.svg';
 import './App.css';
 import Navbar from './components/Navbar';
 
+function Home() {
+  return (
+    <div className="content container">
+      <h1>Home Page</h1>
+    </div>
+  )
+}
+
+function Room() {
+  return (
+    <div className="content container">
+      <h1>Room Page</h1>
+    </div>
+  )
+}
 
 function App() {
   return (
-    <div className="App">
+    <BrowserRouter>
       <Navbar />
-      
-    </div>
+      <Switch>
+        <Route path='/' component={Home} exact/>
+        <Route path='/Room' component={Room} exact/>
+        <Redirect to='/' />
+      </Switch>
+    </BrowserRouter>
   );
 }
 
