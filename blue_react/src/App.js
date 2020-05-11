@@ -46,7 +46,6 @@ function Login() {
         <p class="hint-text">Login with your social media account or email address</p>
         <div class="social-btn text-center">
           <a href="#" class="btn btn-primary btn-lg"><i class="fa fa-facebook"></i> Facebook</a>
-          <a href="#" class="btn btn-info btn-lg"><i class="fa fa-twitter"></i> Twitter</a>
           <a href="#" class="btn btn-danger btn-lg"><i class="fa fa-google"></i> Google</a>
         </div>
         <div class="or-seperator"><b>or</b></div>
@@ -58,6 +57,7 @@ function Login() {
         </div>
         <div class="form-group">
           <button type="submit" class="btn btn-success btn-lg btn-block signup-btn">Login</button>
+          <button class="btn btn-success btn-lg btn-block signup-btn">Forgot Password</button>
         </div>
       </form>
       <div class="text-center">Don't have an account yet? <a href="signup">Sign up here</a></div>
@@ -73,7 +73,6 @@ function Signup() {
       <p class="hint-text">Sign up with your social media account or email address</p>
       <div class="social-btn text-center">
         <a href="#" class="btn btn-primary btn-lg"><i class="fa fa-facebook"></i> Facebook</a>
-        <a href="#" class="btn btn-info btn-lg"><i class="fa fa-twitter"></i> Twitter</a>
         <a href="#" class="btn btn-danger btn-lg"><i class="fa fa-google"></i> Google</a>
       </div>
       <div class="or-seperator"><b>or</b></div>
@@ -99,9 +98,10 @@ function Signup() {
 }
 
 function App() {
+  const currentUser = {name: 'Gurneet'};
   return (
     <BrowserRouter>
-      <Navbar />
+      <Navbar currentUser={currentUser}/>
       <Switch>
         <Route path='/' component={Home} exact/>
         <Route path='/leaderboard' component={Leaderboard} exact/>
