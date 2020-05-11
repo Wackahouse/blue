@@ -1,0 +1,18 @@
+footer {
+  margin-top: 20px;
+  background-color: #5BAFF1;
+  padding-bottom: 5px;
+}
+footer a {
+  color: white;
+}
+footer div {
+  padding-top: 10px;
+}
+.social-media {
+  margin-right: 20px;
+  font-size: 30px;
+}
+.social-media:hover {
+  font-color: white;
+}

@@ -4,11 +4,11 @@ import Container from 'react-bootstrap/Container'
 import logo from './logo.svg';
 import './App.css';
 import Navbar from './components/Navbar';
-import 'jquery';
+import Footer from './components/Footer';
 
 function Home() {
   return (
-    <div className="content container">
+    <div className="container">
       <h1>Home Page</h1>
     </div>
   )
@@ -16,7 +16,7 @@ function Home() {
 
 function Leaderboard() {
   return (
-    <div className="content container">
+    <div className="container">
       <h1>Leaderboard Page</h1>
     </div>
   )
@@ -24,7 +24,7 @@ function Leaderboard() {
 
 function Help() {
   return (
-    <div className="content container">
+    <div className="container">
       <h1>Help page</h1>
     </div>
   )
@@ -32,7 +32,7 @@ function Help() {
 
 function Contact() {
   return (
-    <div className="content container">
+    <div className="container">
       <h1>Contact us Page</h1>
     </div>
   )
@@ -40,8 +40,8 @@ function Contact() {
 
 function Login() {
   return (
-    <div className="content container">
-      <h1>Login/Signup</h1>
+    <div className="container">
+      <h1>Login/Signup Page</h1>
     </div>
   )
 }
@@ -58,6 +58,7 @@ function App() {
         <Route path='/login' component={Login} exact/>
         <Redirect to='/' />
       </Switch>
+      <Footer />
     </BrowserRouter>
   );
 }
