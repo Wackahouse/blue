@@ -6,8 +6,8 @@ import './App.css';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 
-var currentUser = {name: 'Gurneet'};
-// var currentUser = null;
+// var currentUser = {name: 'Gurneet'};
+var currentUser = null;
 
 function Home() {
   return (
@@ -70,32 +70,32 @@ function Login() {
 
 function Signup() {
   return (
-    <div class="signup-form">
+    <div className="signup-form">
       <form action="#" method="post">
       <h2>Create an Account</h2>
-      <p class="hint-text">Sign up with your social media account or email address</p>
-      <div class="social-btn text-center">
-        <a href="#" class="btn btn-primary btn-lg"><i class="fa fa-facebook"></i> Facebook</a>
-        <a href="#" class="btn btn-danger btn-lg"><i class="fa fa-google"></i> Google</a>
+      <p className="hint-text">Sign up with your social media account or email address</p>
+      <div className="social-btn text-center">
+        <a href="#" className="btn btn-primary btn-lg"><i className="fa fa-facebook"></i> Facebook</a>
+        <a href="#" className="btn btn-danger btn-lg"><i className="fa fa-google"></i> Google</a>
       </div>
-      <div class="or-seperator"><b>or</b></div>
-          <div class="form-group">
-            <input type="text" class="form-control input-lg" name="username" placeholder="Username" required="required" />
+      <div className="or-seperator"><b>or</b></div>
+          <div className="form-group">
+            <input type="text" className="form-control input-lg" name="username" placeholder="Username" required="required" />
           </div>
-      <div class="form-group">
-            <input type="email" class="form-control input-lg" name="email" placeholder="Email Address" required="required" />
+      <div className="form-group">
+            <input type="email" className="form-control input-lg" name="email" placeholder="Email Address" required="required" />
           </div>
-      <div class="form-group">
-              <input type="password" class="form-control input-lg" name="password" placeholder="Password" required="required" />
+      <div className="form-group">
+              <input type="password" className="form-control input-lg" name="password" placeholder="Password" required="required" />
           </div>
-      <div class="form-group">
-              <input type="password" class="form-control input-lg" name="confirm_password" placeholder="Confirm Password" required="required" />
+      <div className="form-group">
+              <input type="password" className="form-control input-lg" name="confirm_password" placeholder="Confirm Password" required="required" />
           </div>  
-          <div class="form-group">
-              <button type="submit" class="btn btn-success btn-lg btn-block signup-btn">Sign Up</button>
+          <div className="form-group">
+              <button type="submit" className="btn btn-success btn-lg btn-block signup-btn">Sign Up</button>
           </div>
       </form>
-      <div class="text-center">Already have an account? <a href="login">Login here</a></div>
+      <div className="text-center">Already have an account? <a href="login">Login here</a></div>
   </div>
   )
 }
@@ -156,6 +156,7 @@ function Logout() {
 }
 
 function App() {
+
   return (
     <BrowserRouter>
       <Navbar currentUser={currentUser}/>
