@@ -6,6 +6,12 @@ import './App.css';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 
+/*
+NOTE:- When a user is logged in, remember to store the currentUser to localStorage
+currentUser must be a JSON object 
+(stringify it because setItem expects a string not object)
+When reading the object, use JSON.parse*/
+
 function Home() {
   return (
     <div className="container">
@@ -146,10 +152,18 @@ function GameSettings() {
 }
 
 function Logout() {
-  localStorage.removeItem('currentUser');
-  return (
-    <Redirect to="/" />
-  );
+  if(localStorage.getItem('currentUser')) {
+    localStorage.removeItem('currentUser');
+    return (
+      <div>
+        <Redirect to="/" />
+        {window.location.reload()}
+      </div>
+    );
+  } else {
+    return (
+      <Redirect to='/' />);
+  }
 }
 
 function App() {
