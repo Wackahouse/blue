@@ -6,9 +6,6 @@ import './App.css';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 
-// var currentUser = {name: 'Gurneet'};
-var currentUser = null;
-
 function Home() {
   return (
     <div className="container">
@@ -101,7 +98,7 @@ function Signup() {
 }
 
 function Friends() {
-  if(currentUser) {
+  if(localStorage.getItem('currentUser')) {
     return (
       <div className="container">
         <h1>Friends</h1>
@@ -117,7 +114,7 @@ function Friends() {
 }
 
 function AccountSettings() {
-  if(currentUser) {
+  if(localStorage.getItem('currentUser')) {
     return (
       <div className="container">
         <h1>Account Settings</h1>
@@ -133,7 +130,7 @@ function AccountSettings() {
 }
 
 function GameSettings() {
-  if(currentUser) {
+  if(localStorage.getItem('currentUser')) {
     return (
       <div className="container">
         <h1>Game Settings</h1>
@@ -149,7 +146,7 @@ function GameSettings() {
 }
 
 function Logout() {
-  currentUser = null;
+  localStorage.removeItem('currentUser');
   return (
     <Redirect to="/" />
   );
@@ -159,7 +156,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Navbar currentUser={currentUser}/>
+      <Navbar currentUser={localStorage.getItem('currentUser')}/>
       <Switch>
         <Route path='/' component={Home} exact/>
         <Route path='/leaderboard' component={Leaderboard} exact/>
