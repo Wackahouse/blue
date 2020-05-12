@@ -156,7 +156,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Navbar currentUser={localStorage.getItem('currentUser')}/>
+      <Navbar currentUser={JSON.parse(localStorage.getItem('currentUser'))}/>
       <Switch>
         <Route path='/' component={Home} exact/>
         <Route path='/leaderboard' component={Leaderboard} exact/>
