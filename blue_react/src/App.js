@@ -16,27 +16,16 @@ When reading the object, use JSON.parse*/
 
 const responseFacebook = (response) => {
   console.log(response);
+  // if we need a connection to the db for fb users it needs to go here
   let currentUser = {name: response.name,
     picture: response.picture,
-    email: response.email
+    email: response.email,
+    accessToken: response.accessToken,
+    type: 'facebook'
   }
   localStorage.setItem('currentUser', JSON.stringify(currentUser));
   window.location.reload();
 }
- 
-/*const showFacebookPopup = () => {
-  ReactDOM.render(
-    <FacebookLogin
-      appId="1501831806656820"
-      autoLoad={true}
-      fields="name,email,picture"
-      callback={responseFacebook}
-      cssClass="my-facebook-button-class"
-      icon="fa-facebook"
-    />,
-    document.getElementById('root')
-  );
-}*/
 
 function Home() {
   return (
@@ -81,6 +70,7 @@ function Login() {
             appId="1501831806656820"
             fields="name,email,picture"
             callback={responseFacebook}
+            redirectUri="/"
             cssClass="btn btn-primary btn-lg"
             icon="fa-facebook"/>
           
@@ -184,7 +174,11 @@ function GameSettings() {
 }
 
 function Logout() {
-  if(localStorage.getItem('currentUser')) {
+  let currentUser = localStorage.getItem('currentUser');
+  if(currentUser) {
+    if(window.FB) {
+      window.FB.logout(window.FB.getAccessToken());
+    }
     localStorage.removeItem('currentUser');
     return (
       <div>
