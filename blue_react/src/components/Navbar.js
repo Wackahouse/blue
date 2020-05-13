@@ -14,6 +14,9 @@ class Navbar extends Component {
 			      <div className="collapse navbar-collapse" id="collapsibleNavbar">
 			        <ul className="navbar-nav">
 			          <li className="nav-item">
+			            <a className="nav-link" href="/">Rooms</a>
+			          </li>
+			          <li className="nav-item">
 			            <a className="nav-link" href="leaderboard">Leaderboard</a>
 			          </li>
 			          <li className="nav-item">
@@ -43,6 +46,9 @@ class Navbar extends Component {
 			      </button>
 			      <div className="collapse navbar-collapse" id="collapsibleNavbar">
 			        <ul className="navbar-nav">
+			          <li className="nav-item">
+			            <a className="nav-link" href="/">Rooms</a>
+			          </li>
 			          <li className="nav-item">
 			            <a className="nav-link" href="leaderboard">Leaderboard</a>
 			          </li>

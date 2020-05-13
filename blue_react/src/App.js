@@ -40,7 +40,7 @@ export const responseFacebook = (response) => {
 
 export const responseGoogle = (response) => {
   console.log(response);
-  if (!localStorage.getItem('currentUser')){
+  if ((!localStorage.getItem('currentUser')) || localStorage.getItem('currentUser') === "facebook" ){
     // if we need a connection to the db for gmail users it needs to go here
     let currentUser = {name: response.profileObj.name,
       picture: response.profileObj.imageUrl,
