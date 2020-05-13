@@ -16,6 +16,12 @@ When reading the object, use JSON.parse*/
 
 const responseFacebook = (response) => {
   console.log(response);
+  let currentUser = {name: response.name,
+    picture: response.picture,
+    email: response.email
+  }
+  localStorage.setItem('currentUser', JSON.stringify(currentUser));
+  window.location.reload();
 }
  
 /*const showFacebookPopup = () => {
