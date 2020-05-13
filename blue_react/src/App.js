@@ -1,5 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
+import ReactDOM from 'react-dom';
+import FacebookLogin from 'react-facebook-login';
 import Container from 'react-bootstrap/Container'
 import logo from './logo.svg';
 import './App.css';
@@ -11,6 +13,24 @@ NOTE:- When a user is logged in, remember to store the currentUser to localStora
 currentUser must be a JSON object 
 (stringify it because setItem expects a string not object)
 When reading the object, use JSON.parse*/
+
+const responseFacebook = (response) => {
+  console.log(response);
+}
+ 
+/*const showFacebookPopup = () => {
+  ReactDOM.render(
+    <FacebookLogin
+      appId="1501831806656820"
+      autoLoad={true}
+      fields="name,email,picture"
+      callback={responseFacebook}
+      cssClass="my-facebook-button-class"
+      icon="fa-facebook"
+    />,
+    document.getElementById('root')
+  );
+}*/
 
 function Home() {
   return (
@@ -46,27 +66,33 @@ function Contact() {
 
 function Login() {
   return(
-    <div class="signup-form">
+    <div className="signup-form">
       <form action="#" method="post">
         <h2>Login</h2>
-        <p class="hint-text">Login with your social media account or email address</p>
-        <div class="social-btn text-center">
-          <a href="#" class="btn btn-primary btn-lg"><i class="fa fa-facebook"></i> Facebook</a>
-          <a href="#" class="btn btn-danger btn-lg"><i class="fa fa-google"></i> Google</a>
+        <p className="hint-text">Login with your social media account or email address</p>
+        <div className="social-btn text-center">
+          <FacebookLogin 
+            appId="1501831806656820"
+            fields="name,email,picture"
+            callback={responseFacebook}
+            cssClass="btn btn-primary btn-lg"
+            icon="fa-facebook"/>
+          
+          <a href="#" className="btn btn-danger btn-lg"><i className="fa fa-google"></i> Google</a>
         </div>
-        <div class="or-seperator"><b>or</b></div>
-        <div class="form-group">
-          <input type="text" class="form-control input-lg" name="username" placeholder="Username" required="required" />
+        <div className="or-seperator"><b>or</b></div>
+        <div className="form-group">
+          <input type="text" className="form-control input-lg" name="username" placeholder="Username" required="required" />
         </div>
-        <div class="form-group">
-          <input type="password" class="form-control input-lg" name="password" placeholder="Password" required="required" />
+        <div className="form-group">
+          <input type="password" className="form-control input-lg" name="password" placeholder="Password" required="required" />
         </div>
-        <div class="form-group">
-          <button type="submit" class="btn btn-success btn-lg btn-block signup-btn">Login</button>
-          <button class="btn btn-success btn-lg btn-block signup-btn">Forgot Password</button>
+        <div className="form-group">
+          <button type="submit" className="btn btn-success btn-lg btn-block signup-btn">Login</button>
+          <button className="btn btn-success btn-lg btn-block signup-btn">Forgot Password</button>
         </div>
       </form>
-      <div class="text-center">Don't have an account yet? <a href="signup">Sign up here</a></div>
+      <div className="text-center">Don't have an account yet? <a href="signup">Sign up here</a></div>
   </div>
   );
 }
