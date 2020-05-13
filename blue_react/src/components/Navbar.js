@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { GoogleLogout } from 'react-google-login';
 import './Navbar.css';
 
 class Navbar extends Component {
@@ -55,7 +56,7 @@ class Navbar extends Component {
 			        <ul className="navbar-nav ml-auto">
 			          <li className="nav-item dropdown">
 					      <a className="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-					        {this.props.currentUser.name}
+					        <img src={this.props.currentUser.picture} width="30px" height="30px"></img>  {this.props.currentUser.name}
 					      </a>
 					      <div className="dropdown-menu dropdown-menu-right">
 					        <a className="dropdown-item" href="friends">Friends</a>

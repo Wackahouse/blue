@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
-import FacebookLogin from 'react-facebook-login';
-import { GoogleLogin, GoogleLogout } from 'react-google-login';
+import { GoogleLogout } from 'react-google-login';
 import Container from 'react-bootstrap/Container'
 import logo from './logo.svg';
 import './App.css';
@@ -16,18 +15,21 @@ import Signup from './pages/Signup';
 import Friends from './pages/Friends';
 import AccountSettings from './pages/AccountSettings';
 import GameSettings from './pages/GameSettings';
+// any additional pages must be imported here and added to the BrowserRouter in the rendering of App
 
 /*
 NOTE:- When a user is logged in, remember to store the currentUser to localStorage
 currentUser must be a JSON object 
 (stringify it because setItem expects a string not object)
-When reading the object, use JSON.parse*/
+When reading the object, use JSON.parse
+The currently logged in user is accessible at localStorage.getItem('currentUser');
+*/
 
 export const responseFacebook = (response) => {
   console.log(response);
   // if we need a connection to the db for fb users it needs to go here
   let currentUser = {name: response.name,
-    picture: response.picture,
+    picture: response.picture.data.url,
     email: response.email,
     accessToken: response.accessToken,
     type: 'facebook'
@@ -43,7 +45,8 @@ export const responseGoogle = (response) => {
     let currentUser = {name: response.profileObj.name,
       picture: response.profileObj.imageUrl,
       email: response.profileObj.email,
-      accessToken: response.accessToken
+      accessToken: response.accessToken,
+      type: 'google'
     };
     localStorage.setItem('currentUser', JSON.stringify(currentUser));
     window.location.reload();
@@ -51,19 +54,35 @@ export const responseGoogle = (response) => {
 }
 
 function Logout() {
-  let currentUser = localStorage.getItem('currentUser');
-  if(currentUser) {
+  var currentUser = JSON.parse(localStorage.getItem('currentUser'));
+  if(currentUser != null) {
     if(window.FB) {
       window.FB.logout(window.FB.getAccessToken());
-    }
+    } 
     localStorage.removeItem('currentUser');
+    if(currentUser.type === "google") {
+      return (
+        <div>
+          <GoogleLogout
+            clientId="58667510182-k1alatliu4pb91eadvgp2sk107mp9npm.apps.googleusercontent.com"
+              render={renderProps => (
+                  <button onClick={renderProps.onClick} disabled={renderProps.disabled} className="dropdown-item">Logout</button>
+              )}
+              onLogoutSuccess={console.log("Logging out")}
+          ></GoogleLogout>
+          <Redirect to="/" />
+          {window.location.reload()}
+        </div>
+      );
+    }
     return (
       <div>
         <Redirect to="/" />
         {window.location.reload()}
       </div>
     );
-  } else {
+  } 
+  else {
     return (
       <Redirect to='/' />);
   }

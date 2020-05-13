@@ -25,9 +25,8 @@ class Login extends Component {
 		            render={renderProps => (
 		              <button onClick={renderProps.onClick} disabled={renderProps.disabled} className="btn btn-danger btn-lg"><i className="fa fa-google"></i> Google</button>
 		            )}
-		            onSuccess={responseGoogle}
+		            onSuccess={(response) => {responseGoogle(response)}}
 		            onFailure={() => {console.log("google login failure")}}
-		            cookiePolicy={'single_host_origin'}
 		            cssClass="btn btn-primary btn-lg"
 		            isSignedIn={true}
 		          />
