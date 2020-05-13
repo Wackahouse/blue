@@ -19,9 +19,21 @@ function getMembersForRoom(roomid) {
 	return null;
 }
 
+function checkUserInRoom(members) {
+	let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+	var found = false;
+	members.forEach((member) => {
+		if(member.userid == currentUser.id) {
+			found = true;
+		}
+	})
+	return found;
+}
+
 class RoomPage extends Component {
 	render () {
-		console.log(getMembersForRoom(this.props.match.params.id))
+		let members = getMembersForRoom(this.props.match.params.id);
+		let userInRoom = checkUserInRoom(members);
 		return (<h1>Room {this.props.match.params.id}</h1>);
 	}
 }

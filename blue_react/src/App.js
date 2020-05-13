@@ -33,8 +33,10 @@ export const responseFacebook = (response) => {
     picture: response.picture.data.url,
     email: response.email,
     accessToken: response.accessToken,
-    type: 'facebook'
+    type: 'facebook',
+    id: 1
   };
+  // change the id at a later point in time
   localStorage.setItem('currentUser', JSON.stringify(currentUser));
   window.location.reload();
 }
@@ -52,8 +54,10 @@ export const responseGoogle = (response) => {
       picture: response.profileObj.imageUrl,
       email: response.profileObj.email,
       accessToken: response.accessToken,
-      type: 'google'
+      type: 'google',
+      id: 1
     };
+    // change the id at a later point in time
     localStorage.setItem('currentUser', JSON.stringify(currentUser));
     window.location.reload();
   }
