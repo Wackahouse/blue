@@ -17,21 +17,21 @@ class Navbar extends Component {
 			            <a className="nav-link" href="/">Rooms</a>
 			          </li>
 			          <li className="nav-item">
-			            <a className="nav-link" href="leaderboard">Leaderboard</a>
+			            <a className="nav-link" href="/leaderboard">Leaderboard</a>
 			          </li>
 			          <li className="nav-item">
-			            <a className="nav-link" href="help">Help</a>
+			            <a className="nav-link" href="/help">Help</a>
 			          </li>
 			          <li className="nav-item">
-			            <a className="nav-link" href="contact">Contact</a>
+			            <a className="nav-link" href="/contact">Contact</a>
 			          </li>
 			        </ul>
 			        <ul className="navbar-nav ml-auto">
 			          <li className="nav-item">
-			            <a className="nav-link" href="login">Login</a>
+			            <a className="nav-link" href="/login">Login</a>
 			          </li>
 			          <li className="nav-item">
-			            <a className="nav-link" href="signup">Signup</a>
+			            <a className="nav-link" href="/signup">Signup</a>
 			          </li>
 			        </ul>
 			      </div>
@@ -50,13 +50,13 @@ class Navbar extends Component {
 			            <a className="nav-link" href="/">Rooms</a>
 			          </li>
 			          <li className="nav-item">
-			            <a className="nav-link" href="leaderboard">Leaderboard</a>
+			            <a className="nav-link" href="/leaderboard">Leaderboard</a>
 			          </li>
 			          <li className="nav-item">
-			            <a className="nav-link" href="help">Help</a>
+			            <a className="nav-link" href="/help">Help</a>
 			          </li>
 			          <li className="nav-item">
-			            <a className="nav-link" href="contact">Contact</a>
+			            <a className="nav-link" href="/contact">Contact</a>
 			          </li>
 			        </ul>
 			        <ul className="navbar-nav ml-auto">
@@ -65,10 +65,10 @@ class Navbar extends Component {
 					        <img src={this.props.currentUser.picture} width="30px" height="30px"></img>  {this.props.currentUser.name}
 					      </a>
 					      <div className="dropdown-menu dropdown-menu-right">
-					        <a className="dropdown-item" href="friends">Friends</a>
-					        <a className="dropdown-item" href="game-settings">Game Settings</a>
-					        <a className="dropdown-item" href="account-settings">Account Settings</a>
-					        <a className="dropdown-item" href="logout">Logout</a>
+					        <a className="dropdown-item" href="/friends">Friends</a>
+					        <a className="dropdown-item" href="/game-settings">Game Settings</a>
+					        <a className="dropdown-item" href="/account-settings">Account Settings</a>
+					        <a className="dropdown-item" href="/logout">Logout</a>
 					      </div>
 					    </li>
 			        </ul>

@@ -45,6 +45,7 @@ var rooms = [
  	public: true
  }
 ]
+//localStorage.setItem('rooms', JSON.stringify(rooms));
 
 class Home extends Component {
 	render() {

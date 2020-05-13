@@ -15,6 +15,7 @@ import Signup from './pages/Signup';
 import Friends from './pages/Friends';
 import AccountSettings from './pages/AccountSettings';
 import GameSettings from './pages/GameSettings';
+import RoomPage from './pages/RoomPage'
 // any additional pages must be imported here and added to the BrowserRouter in the rendering of App
 
 /*
@@ -110,6 +111,7 @@ class App extends Component {
           <Route path='/account-settings' component={AccountSettings} exact/>
           <Route path='/game-settings' component={GameSettings} exact/>
           <Route path='/logout' component={Logout} exact/>
+          <Route path='/Room/:id' component={RoomPage} exact/>
           <Redirect to='/' />
         </Switch>
         <Footer />

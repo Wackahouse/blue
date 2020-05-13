@@ -29,7 +29,6 @@ class Signup extends Component {
 		            onFailure={() => {console.log("google login failure")}}
 		            cookiePolicy={'single_host_origin'}
 		            cssClass="btn btn-primary btn-lg"
-		            isSignedIn={true}
 		          />
 		        </div>
 		      <div className="or-seperator"><b>or</b></div>
