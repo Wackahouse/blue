@@ -125,9 +125,27 @@ function Signup() {
       <h2>Create an Account</h2>
       <p className="hint-text">Sign up with your social media account or email address</p>
       <div className="social-btn text-center">
-        <a href="#" className="btn btn-primary btn-lg"><i className="fa fa-facebook"></i> Facebook</a>
-        <a href="#" className="btn btn-danger btn-lg"><i className="fa fa-google"></i> Google</a>
-      </div>
+          <FacebookLogin 
+            appId="1501831806656820"
+            fields="name,email,picture"
+            callback={responseFacebook}
+            textButton="Facebook"
+            redirectUri="/"
+            cssClass="btn btn-primary btn-lg"
+            icon="fa-facebook"
+            />
+          <GoogleLogin 
+            clientId="58667510182-k1alatliu4pb91eadvgp2sk107mp9npm.apps.googleusercontent.com"
+            render={renderProps => (
+              <button onClick={renderProps.onClick} disabled={renderProps.disabled} className="btn btn-danger btn-lg"><i className="fa fa-google"></i> Google</button>
+            )}
+            onSuccess={responseGoogle}
+            onFailure={() => {console.log("google login failure")}}
+            cookiePolicy={'single_host_origin'}
+            cssClass="btn btn-primary btn-lg"
+            isSignedIn={true}
+          />
+        </div>
       <div className="or-seperator"><b>or</b></div>
           <div className="form-group">
             <input type="text" className="form-control input-lg" name="username" placeholder="Username" required="required" />
