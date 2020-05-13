@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
-import ReactDOM from 'react-dom';
 import FacebookLogin from 'react-facebook-login';
+import { GoogleLogin, GoogleLogout } from 'react-google-login';
 import Container from 'react-bootstrap/Container'
 import logo from './logo.svg';
 import './App.css';
@@ -22,9 +22,23 @@ const responseFacebook = (response) => {
     email: response.email,
     accessToken: response.accessToken,
     type: 'facebook'
-  }
+  };
   localStorage.setItem('currentUser', JSON.stringify(currentUser));
   window.location.reload();
+}
+
+const responseGoogle = (response) => {
+  console.log(response);
+  if (!localStorage.getItem('currentUser')){
+    // if we need a connection to the db for gmail users it needs to go here
+    let currentUser = {name: response.profileObj.name,
+      picture: response.profileObj.imageUrl,
+      email: response.profileObj.email,
+      accessToken: response.accessToken
+    };
+    localStorage.setItem('currentUser', JSON.stringify(currentUser));
+    window.location.reload();
+  }
 }
 
 function Home() {
@@ -70,11 +84,22 @@ function Login() {
             appId="1501831806656820"
             fields="name,email,picture"
             callback={responseFacebook}
+            textButton="Facebook"
             redirectUri="/"
             cssClass="btn btn-primary btn-lg"
-            icon="fa-facebook"/>
-          
-          <a href="#" className="btn btn-danger btn-lg"><i className="fa fa-google"></i> Google</a>
+            icon="fa-facebook"
+            />
+          <GoogleLogin 
+            clientId="58667510182-k1alatliu4pb91eadvgp2sk107mp9npm.apps.googleusercontent.com"
+            render={renderProps => (
+              <button onClick={renderProps.onClick} disabled={renderProps.disabled} className="btn btn-danger btn-lg"><i className="fa fa-google"></i> Google</button>
+            )}
+            onSuccess={responseGoogle}
+            onFailure={() => {console.log("google login failure")}}
+            cookiePolicy={'single_host_origin'}
+            cssClass="btn btn-primary btn-lg"
+            isSignedIn={true}
+          />
         </div>
         <div className="or-seperator"><b>or</b></div>
         <div className="form-group">
