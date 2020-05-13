@@ -25,10 +25,9 @@ class Login extends Component {
 		            render={renderProps => (
 		              <button onClick={renderProps.onClick} disabled={renderProps.disabled} className="btn btn-danger btn-lg"><i className="fa fa-google"></i> Google</button>
 		            )}
-		            onSuccess={(response) => {responseGoogle(response)}}
+		            onSuccess={responseGoogle}
 		            onFailure={() => {console.log("google login failure")}}
 		            cssClass="btn btn-primary btn-lg"
-		            isSignedIn={true}
 		          />
 		        </div>
 		        <div className="or-seperator"><b>or</b></div>
