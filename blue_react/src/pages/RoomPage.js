@@ -7,7 +7,7 @@ import { Redirect } from "react-router-dom";
 If the room is private and a user tries to joining without being a member, they are redirected to the main page
 */
 
-function getMembersForRoom(roomid) {
+export const getMembersForRoom = (roomid) => {
 	// return the member ids for the particular room
 	let rooms = JSON.parse(localStorage.getItem('rooms'));
 	if (rooms.length > 0) {
@@ -40,7 +40,7 @@ export const getPrivacyStatus = (roomid) => {
 	return null;
 }
 
-function checkUserInRoom(members) {
+export const checkUserInRoom = (members)  => {
 	let currentUser = JSON.parse(localStorage.getItem('currentUser'));
 	var found = false;
 	members.forEach((member) => {

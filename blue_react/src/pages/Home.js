@@ -7,11 +7,13 @@ We need a list of JSON objects that holds infor about each room
 Once the server and db are setup, this is the variable that will store that info
 private rooms will also have an access code
 [members] needs to contain the name and the userid from the db
-rooms := {id (int),name (str), members ([Object object]), public (bool), (?)accssCode (str)}
+the owner field specifies the user id of the owner of the room
+rooms := {id (int), owner (int), name (str), members ([Object object]), public (bool), (?)accssCode (str)}
 */
 var rooms = [
 {
 	id: 763912,
+	owner: 1,
 	name: 'Wackahouse0', 
 	members:[
 	{name: 'Gurneet', userid: 1},
@@ -24,6 +26,7 @@ var rooms = [
  },
  {
 	id: 763910,
+	owner: 1,
 	name: 'Wackahouse0', 
 	members:[
 	{name: 'Gurneet', userid: 1},
@@ -35,6 +38,7 @@ var rooms = [
  },
  {
  	id: 986701,
+ 	owner: 6,
  	name: 'Wackahouse1',
  	members: [
  	{name: 'Red', userid: 6},
@@ -45,6 +49,7 @@ var rooms = [
  },
  {
  	id: 986702,
+ 	owner: 6,
  	name: 'Wackahouse1',
  	members: [
  	{name: 'Red', userid: 6},
@@ -55,7 +60,7 @@ var rooms = [
  	accessCode: "937409"
  }
 ]
-localStorage.setItem('rooms', JSON.stringify(rooms));
+// localStorage.setItem('rooms', JSON.stringify(rooms));
 
 class Home extends Component {
 	render() {
