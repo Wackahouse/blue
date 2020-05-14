@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from "react-router-dom";
+import $ from 'jquery'; 
 
 // accessible at urls of the form http://localhost:3000/Room/986701
 
@@ -56,6 +57,35 @@ class RoomPage extends Component {
 		if(!localStorage.getItem('currentUser')) {
 			alert('You need to login before you can proceed!');
 			return (<Redirect to='/Login' />);
+			/*return (
+				<div>
+ 					<div className="modal fade" id="centralModalDanger" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					   <div className="modal-dialog modal-notify modal-danger" role="document">
+					       <div className="modal-content">
+					       		<div className="modal-header">
+						         	<p className="heading lead">Modal Danger</p>
+
+						         	<button type="button" className="close" data-dismiss="modal" aria-label="Close">
+						           	<span aria-hidden="true" className="white-text">&times;</span>
+						         	</button>
+						       	</div>
+						       	<div className="modal-body">
+						         	<div className="text-center">
+						           	<i className="fas fa-check fa-4x mb-3 animated rotateIn"></i>
+						           	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit iusto nulla aperiam blanditiis
+						             	ad consequatur in dolores culpa, dignissimos, eius non possimus fugiat. Esse ratione fuga, enim,
+						             	ab officiis totam.</p>
+						         	</div>
+						       	</div>
+						       	<div className="modal-footer justify-content-center">
+						         	<a type="button" className="btn btn-danger">Get it now <i className="far fa-gem ml-1 text-white"></i></a>
+						         	<a type="button" className="btn btn-outline-danger waves-effect" data-dismiss="modal">No, thanks</a>
+						       	</div>
+					     	</div>
+					   	</div>
+					</div>
+ 				</div>
+			);*/
 		}
 		let members = getMembersForRoom(this.props.match.params.id);
 		if(!members) {
