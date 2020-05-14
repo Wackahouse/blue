@@ -43,9 +43,20 @@ var rooms = [
  	{name: 'Raluca', userid: 8}
  	],
  	public: true
+ },
+ {
+ 	id: 986702,
+ 	name: 'Wackahouse1',
+ 	members: [
+ 	{name: 'Red', userid: 6},
+ 	{name: 'Greta', userid: 7},
+ 	{name: 'Raluca', userid: 8}
+ 	],
+ 	public: false,
+ 	accessCode: "937409"
  }
 ]
-//localStorage.setItem('rooms', JSON.stringify(rooms));
+localStorage.setItem('rooms', JSON.stringify(rooms));
 
 class Home extends Component {
 	render() {
