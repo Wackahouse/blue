@@ -24,7 +24,7 @@ function getMembersForRoom(roomid) {
 	return null;
 }
 
-function getPrivacyStatus(roomid) {
+export const getPrivacyStatus = (roomid) => {
 	let rooms = JSON.parse(localStorage.getItem('rooms'));
 	if (rooms.length > 0) {
 		for (var i = rooms.length - 1; i >= 0; i--) {
@@ -53,6 +53,10 @@ function checkUserInRoom(members) {
 
 class RoomPage extends Component {
 	render () {
+		if(!localStorage.getItem('currentUser')) {
+			alert('You need to login before you can proceed!');
+			return (<Redirect to='/Login' />);
+		}
 		let members = getMembersForRoom(this.props.match.params.id);
 		if(!members) {
 			alert('No such room found!');

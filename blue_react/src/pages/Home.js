@@ -32,7 +32,6 @@ var rooms = [
  	{name: 'Finlay', userid: 4}
  	],
  	public: true,
- 	accessCode: "iw93p4"
  },
  {
  	id: 986701,
