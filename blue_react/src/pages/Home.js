@@ -66,10 +66,13 @@ const joinroom = () => {
 	window.location.href = "/room/join/"+document.getElementById('room-number').value;
 }
 
+const createroom = () => {
+	// this is the part that would need to be connected to the db for creating a room
+	
+}
 
 class CreateRoomModal extends Component {
 	handleCheckboxChange(e) {
-  		console.log('value of checkbox : ', e.target.checked);
   		let div = document.getElementById('room-code-form');
   		if(e.target.checked && div.classList.contains('display-none')) {
   			div.classList.remove('display-none');
@@ -110,7 +113,7 @@ class CreateRoomModal extends Component {
         					</div>
       					</div>
       					<div className="modal-footer d-flex justify-content-center">
-        					<button onClick={joinroom} className="btn btn-indigo">Create</button>
+        					<button onClick={createroom} className="btn btn-indigo">Create</button>
       					</div>
     				</div>
   				</div>
