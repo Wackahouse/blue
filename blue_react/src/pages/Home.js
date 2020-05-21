@@ -60,13 +60,17 @@ var rooms = [
  	accessCode: "937409"
  }
 ]
-localStorage.setItem('rooms', JSON.stringify(rooms));
+// localStorage.setItem('rooms', JSON.stringify(rooms));
+
+const joinroom = () => {
+	window.location.href = "/room/join/"+document.getElementById('room-number').value;
+}
 
 
 class JoinRoomModal extends Component {
 	render() {
 		return(
-			<div className="modal fade" id="joinRoomModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div className="modal fade" id="joinRoomModal" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   				<div className="modal-dialog" role="document">
     				<div className="modal-content">
       					<div className="modal-header text-center">
@@ -78,12 +82,12 @@ class JoinRoomModal extends Component {
       					<div className="modal-body mx-3">
         					<div className="md-form mb-5">
 					      		<i className="fas fa-user prefix grey-text"></i>
-					          	<input type="text" id="form3" className="form-control validate" />
-					          	<label data-error="wrong" data-success="right" for="form3">Room Number</label>
+					          	<input id="room-number" type="text" className="form-control validate" />
+					          	<label data-error="wrong" data-success="right" htmlFor="form3">Room Number</label>
         					</div>
       					</div>
       					<div className="modal-footer d-flex justify-content-center">
-        					<button className="btn btn-indigo">Join</button>
+        					<button onClick={joinroom} className="btn btn-indigo">Join</button>
       					</div>
     				</div>
   				</div>
