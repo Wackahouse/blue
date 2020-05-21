@@ -9,7 +9,7 @@ function getPrivateRoomCode(roomid) {
 		for (var i = rooms.length - 1; i >= 0; i--) {
 			let room = rooms[i];
 			if(room.id == roomid) {
-				return room.accessCode
+				return room.accessCode;
 			}
 		}
 	}
