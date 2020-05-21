@@ -67,6 +67,59 @@ const joinroom = () => {
 }
 
 
+class CreateRoomModal extends Component {
+	handleCheckboxChange(e) {
+  		console.log('value of checkbox : ', e.target.checked);
+  		let div = document.getElementById('room-code-form');
+  		if(e.target.checked && div.classList.contains('display-none')) {
+  			div.classList.remove('display-none');
+  		} else {
+  			div.classList.add('display-none')
+  		}
+	}
+
+	render() {
+		return(
+			<div className="modal fade" id="createRoomModal" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  				<div className="modal-dialog" role="document">
+    				<div className="modal-content">
+      					<div className="modal-header text-center">
+        					<h4 className="modal-title w-100 font-weight-bold">Create New Room</h4>
+        					<button type="button" className="close" data-dismiss="modal" aria-label="Close">
+          						<span aria-hidden="true">&times;</span>
+        					</button>
+      					</div>
+      					<div className="modal-body mx-3">
+        					<div className="md-form mb-5">
+					      		<i className="fa fa-user prefix grey-text"></i>
+					          	<input id="room-name" type="text" className="form-control validate" />
+					          	<label data-error="wrong" data-success="right" htmlFor="room-name">Room Name</label>
+        					</div>
+
+        					<div id="room-code-form" className="md-form mb-5 display-none">
+					      		<i className="fa fa-lock prefix grey-text"></i>
+					          	<input id="room-code" type="text" className="form-control validate" />
+					          	<label data-error="wrong" data-success="right" htmlFor="room-code">Room Code</label>
+        					</div>
+
+        					<div className="md-form mb-5">
+					      		<div className="custom-control custom-checkbox">
+								    <input onChange={this.handleCheckboxChange.bind(this)} type="checkbox" className="custom-control-input" id="private-room" />
+								    <label className="custom-control-label" htmlFor="private-room">Private Room</label>
+								</div>
+        					</div>
+      					</div>
+      					<div className="modal-footer d-flex justify-content-center">
+        					<button onClick={joinroom} className="btn btn-indigo">Create</button>
+      					</div>
+    				</div>
+  				</div>
+			</div>
+		);
+	}
+}
+
+
 class JoinRoomModal extends Component {
 	render() {
 		return(
@@ -83,7 +136,7 @@ class JoinRoomModal extends Component {
         					<div className="md-form mb-5">
 					      		<i className="fas fa-user prefix grey-text"></i>
 					          	<input id="room-number" type="text" className="form-control validate" />
-					          	<label data-error="wrong" data-success="right" htmlFor="form3">Room Number</label>
+					          	<label data-error="wrong" data-success="right" htmlFor="room-number">Room Number</label>
         					</div>
       					</div>
       					<div className="modal-footer d-flex justify-content-center">
@@ -103,7 +156,8 @@ class Home extends Component {
 		        <h1>Home Page</h1>
 		        <div className="row justify-content-center">
 		        	<div className="nav-button column">
-		        		<button type="button" className="btn btn-info">Create New Room</button>
+		        		<CreateRoomModal></CreateRoomModal>
+		        		<button type="button" className="btn btn-info" data-toggle="modal" data-target="#createRoomModal">Create New Room</button>
 		        	</div>
 		        	<div className="nav-button column">
 						<JoinRoomModal></JoinRoomModal>
@@ -111,7 +165,7 @@ class Home extends Component {
 		        	</div>
 		        </div>
 		        <div className="md-form active-cyan-2 mb-3">
-  				  <input className="form-control" type="text" placeholder="Search" aria-label="Search" />
+  					<input className="form-control" type="text" placeholder="Search" aria-label="Search" />
 			    </div>
 			    <RoomCards rooms={rooms}/>
 		    </div>
